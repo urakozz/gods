@@ -29,4 +29,10 @@ func TestInsert(t *testing.T) {
 	bst.Delete(4)
 	bst.Traverse()
 
+	bst.Reverse()
+	bst.Traverse()
+
+	bst.Reverse()
+	bst.Traverse()
+
 }

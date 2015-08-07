@@ -37,9 +37,14 @@ func (b *BST) Max() (int64, error) {
 	return 0, errors.New("BST is empty")
 }
 
+func (b *BST) Reverse(){
+	b.root.Reverse()
+}
+
 func (b *BST) Traverse() {
 	b.root.Traverse(0)
 }
+
 func (b *BST) Delete(key int64) {
 	if b.root != nil {
 		b.root = deleteNode(b.root, key)
@@ -50,6 +55,11 @@ func (n *Node) Traverse(level int) {
 	if n.Right != nil { n.Right.Traverse(level+1) }
 	fmt.Printf("> %s%d\n", strings.Repeat("\t", level), n.Value)
 	if n.Left != nil { n.Left.Traverse(level+1) }
+}
+func (n *Node) Reverse() {
+	n.Right, n.Left = n.Left, n.Right
+	if n.Right != nil { n.Right.Reverse() }
+	if n.Left != nil { n.Left.Reverse() }
 }
 
 func (n *Node) FindMin() *Node {
