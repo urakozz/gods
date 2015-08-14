@@ -17,10 +17,8 @@ type BST struct {
 
 
 func (b *BST) Insert(value int64) {
-	if b.root == nil {
-		b.root = &Node{Value:value}
-	}
-	insert(b.root, value)
+
+	b.root = insert(b.root, value)
 }
 
 func (b *BST) Min() (int64, error) {
@@ -77,7 +75,9 @@ func (n *Node) FindMax() *Node {
 }
 
 func insert(n *Node, value int64) *Node {
-	if value > n.Value {
+	if n == nil {
+		n = &Node{Value:value}
+	} else if value > n.Value {
 		if n.Right == nil {
 			n.Right = &Node{Value:value}
 		}
@@ -108,10 +108,10 @@ func deleteMin(n *Node) *Node {
 }
 
 func deleteNode(n *Node, key int64) *Node {
-	fmt.Printf("%+v\n", n)
+//	fmt.Printf("%+v\n", n)
 	if key < n.Value  {
 		n.Left = deleteNode(n.Left, key)
-	}else if key > n.Value  {
+	} else if key > n.Value  {
 		n.Right = deleteNode(n.Right, key)
 	} else {
 		// Remove this node
@@ -124,17 +124,17 @@ func deleteNode(n *Node, key int64) *Node {
 		if n.Right == nil {
 			return n.Left
 		}
-		n.Traverse(0)
+//		n.Traverse(0)
 		t := n
 		n = t.Right.FindMin()
 		n.Right = deleteMin(t.Right)
 		n.Left = t.Left
 
-		fmt.Println("right")
-		n.Right.Traverse(1)
-		fmt.Println("left")
-		n.Left.Traverse(1)
-		fmt.Printf("%+v, left %+v, right %+v", n, n.Left, n.Right)
+//		fmt.Println("right")
+//		n.Right.Traverse(1)
+//		fmt.Println("left")
+//		n.Left.Traverse(1)
+//		fmt.Printf("%+v, left %+v, right %+v", n, n.Left, n.Right)
 	}
 
 	return n
