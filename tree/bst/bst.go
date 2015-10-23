@@ -15,6 +15,10 @@ type BST struct {
 	root *Node
 }
 
+func NewBinarySearchTree() *BST {
+	return &BST{}
+}
+
 
 func (b *BST) Insert(value int64) {
 
