@@ -4,4 +4,4 @@
 
 Data structures and algorithms for Golang
 
-Inspired by Princeton courses [Book](http://algs4.cs.princeton.edu/home/)
+Inspired by Princeton courses on [Coursera](https://www.coursera.org/course/algs4partII)
