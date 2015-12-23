@@ -5,7 +5,7 @@ import (
 	"testing"
 )
 
-func TestCreateNewWishlist(t *testing.T) {
+func TestCreateNewComparable(t *testing.T) {
 
 	str := CString("a")
 	cmp := str.CompareTo(CString("b"))
