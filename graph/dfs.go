@@ -1,7 +1,6 @@
 // Copyright 2015 Home24 AG. All rights reserved.
 // Proprietary license.
 package graph
-import "container/list"
 
 type DeepFirstSearch struct {
 	marked []bool
@@ -12,7 +11,6 @@ func NewDFS(g IGraph, s int) *DeepFirstSearch{
 	d := &DeepFirstSearch{}
 	d.marked = make([]bool, d.count)
 	d.dfs(g, s)
-	list.New()
 	return d
 }
 

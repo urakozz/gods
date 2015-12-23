@@ -31,4 +31,8 @@ func (q *QueueInt) Dequeue() (int, error){
 	return q.out.Pop()
 }
 
+func (q *QueueInt) IsEmpty() bool {
+	return q.in.IsEmpty() && q.out.IsEmpty()
+}
+
 
