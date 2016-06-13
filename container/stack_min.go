@@ -1,11 +1,12 @@
+package container
 type MinStack struct{
-    list *Stack
-    mins *Stack
+    list *StackInt
+    mins *StackInt
     min int
 }
 
 func NewMinStack()*MinStack{
-    return &MinStack{list:NewStack(), mins:NewStack()}
+    return &MinStack{list:&StackInt{}, mins:&StackInt{}}
 }
 
 func (s *MinStack) Push(i int) {
@@ -17,7 +18,7 @@ func (s *MinStack) Push(i int) {
 }
 
 func (s *MinStack) Pop() int {
-    i := s.list.Pop()
+    i, _ := s.list.Pop()
     s.mins.Pop()
     s.min = s.mins.GetLast()
     return i
@@ -25,26 +26,6 @@ func (s *MinStack) Pop() int {
 
 func (s *MinStack) GetMin() int{
     return s.min
-} 
+}
 
 
-type Stack struct{
-    list []int
-}
-func NewStack() * Stack{
-    return &Stack{list:make([]int)}
-}
-func (s *MinStack) Push(i int) {
-    s.list = append(s.list, i)
-}
-func (s *MinStack) Pop() int {
-    ans := s.GetLast()
-    s.list = s.list[0:len(s.list)-2]
-    return ans
-}
-func (s *MinStack) IsEmpty() bool {
-    return 0 == len(s.list)
-}
-func (s *MinStack) GetLast() int {
-    return s.list[len(s.list)-1]
-}

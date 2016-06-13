@@ -36,4 +36,7 @@ func (s *StackInt) Pop() (int, error) {
 func (s *StackInt) IsEmpty() bool {
 	return s.stack == nil || 0 == len(s.stack)
 }
+func (s *StackInt) GetLast() int {
+	return s.stack[len(s.stack)-1]
+}
 
