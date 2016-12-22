@@ -1,4 +1,4 @@
-// Copyright 2016 Home24 AG. All rights reserved.
+// Copyright 2016 Kozyrev Yury
 // Proprietary license.
 package bloom
 
