@@ -3,9 +3,6 @@
 package graph
 import "github.com/urakozz/gods/container"
 
-type BFS struct {
-	q container.QueueInt
-}
 
 type BreadthFirstSearch struct {
 	q container.QueueInt
@@ -13,7 +10,7 @@ type BreadthFirstSearch struct {
 	count int
 }
 
-func NewBFS(g IGraph, s int) *BreadthFirstSearch{
+func NewBFS(g IIntGraph, s int) *BreadthFirstSearch{
 	d := &BreadthFirstSearch{}
 	d.marked = make([]bool, d.count)
 
@@ -21,7 +18,7 @@ func NewBFS(g IGraph, s int) *BreadthFirstSearch{
 	return d
 }
 
-func (d *BreadthFirstSearch) bfs(g IGraph, s int) {
+func (d *BreadthFirstSearch) bfs(g IIntGraph, s int) {
 	d.q.Enqueue(s)
 	d.marked[s] = true
 

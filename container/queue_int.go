@@ -2,6 +2,8 @@
 // Proprietary license.
 package container
 
+// Queue implementation using two stacks
+//
 type QueueInt struct {
 	in *StackInt
 	out *StackInt

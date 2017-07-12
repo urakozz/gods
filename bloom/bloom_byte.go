@@ -8,20 +8,20 @@ import (
 )
 
 type Hasher interface {
-	Hash(s []byte) int64
+	Hash(s []byte) uint64
 }
 type hash struct {
-	seed int64
+	seed uint64
 }
 
 func NewHash() Hasher {
-	return &hash{seed:int64(rand.Float32()) * 32 + 32}
+	return &hash{seed:uint64(rand.Float32()) * 32 + 32}
 }
-func (h *hash) Hash(s []byte) int64 {
-	prime := int64(1099511628211)
-	var hash int64
+func (h *hash) Hash(s []byte) uint64 {
+	prime := uint64(1099511628211)
+	var hash uint64
 	for _, r := range s {
-		hash = (hash * h.seed + r) % prime
+		hash = (hash * h.seed + uint64(r)) % prime
 	}
 	return hash
 }
@@ -50,11 +50,11 @@ func (b *bloom) Test(s []byte) bool {
 }
 
 func NewOptimalBloom(maxMembers uint64, errorProbability float64) *bloom {
-	size := -(maxMembers * math.Log(errorProbability)) / (math.Ln2 * math.Ln2)
-	count := (size / maxMembers) * math.Ln2
+	size := uint64(-(float64(maxMembers) * math.Log(errorProbability)) / (math.Ln2 * math.Ln2))
+	count := uint64((float64(size) / float64(maxMembers)) * math.Ln2)
 
 	fns := make([]Hasher, count)
-	for i, _ := range fns {
+	for i := range fns {
 		fns[i] = NewHash()
 	}
 	return NewBloom(size, fns...)

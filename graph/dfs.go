@@ -7,7 +7,7 @@ type DeepFirstSearch struct {
 	count int
 }
 
-func NewDFS(g IGraph, s int) *DeepFirstSearch{
+func NewDFS(g IIntGraph, s int) *DeepFirstSearch{
 	d := &DeepFirstSearch{}
 	d.marked = make([]bool, d.count)
 	d.dfs(g, s)
@@ -15,7 +15,7 @@ func NewDFS(g IGraph, s int) *DeepFirstSearch{
 }
 
 
-func (d *DeepFirstSearch) dfs(g IGraph, v int) {
+func (d *DeepFirstSearch) dfs(g IIntGraph, v int) {
 	d.count++
 	d.marked[v] = true
 	for _, a := range g.Adj(v) {

@@ -35,5 +35,5 @@ func (g *UndirectedGraph) AddEdge(v,w int) {
 	g.e ++
 }
 
-var _ IGraph = (*UndirectedGraph)(nil)
+var _ IIntGraph = (*UndirectedGraph)(nil)
 

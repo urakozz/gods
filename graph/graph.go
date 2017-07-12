@@ -2,7 +2,7 @@
 // Proprietary license.
 package graph
 
-type IGraph interface {
+type IIntGraph interface {
 	V() int
 	E() int
 	Adj(v int) []int
